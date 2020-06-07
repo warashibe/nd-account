@@ -1,0 +1,8 @@
+{
+  "epics": [ "changeUser", "logout", "logout_authereum", "login", "check_alis", "deleteAccount", "linkAccount", "unlinkAccount" ],
+  "props": [ "user", "user_init", "uport", "_user" ],
+  "api": { "apiAlisOauth": "alis-oauth", "apiSteemOauth": "steem-oauth", "apiUportLogin": "uport-login" },
+  "functions": { "nd-account-functions": [ "loginUport", "loginMetamask", "loginAuthereum", "login" ] },
+  "evn": [ "ALIS_CLIENT_SECRET", "UPORT_PRIVATE_KEY", "WEB3_INFURA", "UPORT_RPCURL" ],
+  "components": ["Login","UPort"]
+}
