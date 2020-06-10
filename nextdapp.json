@@ -4,5 +4,5 @@
   "api": { "apiAlisOauth": "alis-oauth", "apiSteemOauth": "steem-oauth", "apiUportLogin": "uport-login" },
   "functions": { "nd-account-functions": [ "loginUport", "loginMetamask", "loginAuthereum", "login" ] },
   "evn": [ "ALIS_CLIENT_SECRET", "UPORT_PRIVATE_KEY", "WEB3_INFURA", "UPORT_RPCURL" ],
-  "components": ["Login","UPort"]
+  "components": ["Login", "UPort", "Profile", "LinkAccount"]
 }

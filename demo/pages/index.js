@@ -4,6 +4,12 @@ import { fb, isFirebase } from "@nextdapp/firebase"
 import R from "ramdam"
 import Login from "nd/account/Login"
 import UPort from "nd/account/UPort"
+import Profile from "nd/account/Profile"
+import LinkAccount from "nd/account/LinkAccount"
+import { Box, Flex, Text, Image, Button } from "rebass"
+import { socials } from "../.."
+const btn = { cursor: "pointer", ":hover": { opacity: 0.75 } }
+const socials_map = R.indexBy(R.prop("key"))(socials)
 
 export default bind(
   props => {
@@ -30,22 +36,25 @@ export default bind(
       )
     ) : (
       <Fragment>
-        <div
-          onClick={() => {
-            props.logout$account()
-          }}
+        <Flex
+          flexWrap="wrap"
+          sx={{ position: "relative", minHeight: props.innerHeight$nav }}
         >
-          logout
-        </div>
-        <div>{props.user$account.name}</div>
+          <Box width={[1, null, null, 1 / 2]}>
+            <Profile />
+          </Box>
+          <Box width={[1, null, null, 1 / 2]}>
+            <LinkAccount />
+          </Box>
+        </Flex>
       </Fragment>
     )
   },
   ["user$account", "uport$account", "processing$util"],
   [
     "changeUser$account",
-    "login$account",
-    "logout$account",
-    "check_alis$account"
+    "check_alis$account",
+    "linkAccount$account",
+    "unlinkAccount$account"
   ]
 )
