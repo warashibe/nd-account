@@ -1,18 +1,17 @@
 {
   "name": "next-dapp-bare",
-  "version": "0.2.1",
+  "version": "0.1.0",
   "dependencies": {
-    "@nextdapp/core": "^0.8.5",
-    "@nextdapp/firebase": "^0.6.0",
-    "@nextdapp/util": "^0.12.0",
+    "@nextdapp/core": "^0.10.0",
+    "@nextdapp/firebase": "^0.7.1",
+    "@nextdapp/util": "^0.15.0",
     "next": "^9.4.4",
     "next-offline": "^5.0.0",
-    "next-redux-wrapper": "^6.0.0",
     "normalize.css": "^8.0.1",
-    "ramdam": "^1.0.0",
+    "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.1.3"
+    "recoil": "0.0.7"
   },
   "scripts": {
     "dev": "next",

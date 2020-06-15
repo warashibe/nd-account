@@ -1,5 +1,6 @@
 const account = require("./account")
-const R = require("ramdam")
+import { default as init } from "./init"
+import { mergeAll } from "ramda"
 const Login = { Login: require("./components/Login") }
 const UPort = { UPort: require("./components/UPort") }
 const Profile = { Profile: require("./components/Profile") }
@@ -8,8 +9,9 @@ import apiAlisOauth from "./api/alis-oauth"
 import apiSteemOauth from "./api/steem-oauth"
 import apiUportLogin from "./api/uport-login"
 import { socials } from "./const"
-module.exports = R.mergeAll([
+module.exports = mergeAll([
   { socials: socials },
+  init,
   account,
   Profile,
   LinkAccount,

@@ -1,8 +1,8 @@
 import React from "react"
 import { Box, Flex, Text, Image, Button } from "rebass"
 import { socials } from "../const"
-import R from "ramdam"
-const socials_map = R.indexBy(R.prop("key"))(socials)
+import { prop, indexBy } from "ramda"
+const socials_map = indexBy(prop("key"))(socials)
 const btn = { cursor: "pointer", ":hover": { opacity: 0.75 } }
 
 export const Component = props => {
@@ -65,5 +65,3 @@ export const Component = props => {
 }
 
 export const props = ["uport$account"]
-
-export const funcs = ["set"]

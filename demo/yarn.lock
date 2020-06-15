@@ -1207,10 +1207,10 @@
   resolved "https://registry.yarnpkg.com/@firebase/firestore-types/-/firestore-types-1.11.0.tgz#ccb734fd424b8b6c3aff3ad1921a89ee31be229b"
   integrity sha512-hD7+cmMUvT5OJeWVrcRkE87PPuj/0/Wic6bntCopJE1WIX/Dm117AUkHgKd3S7Ici6DLp4bdlx1MjjwWL5942w==
 
-"@firebase/firestore@1.15.0":
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-1.15.0.tgz#e8dfd87655d28765ee9ff43d53757637be27faed"
-  integrity sha512-4eSBDY2hb/og8OEFZSjjzlb0y5+cWpridtQHLYsM4IPcOwxnnlE6RjGWN+UUxgKtvlkvOBdUIlTjL/YYoF+QcA==
+"@firebase/firestore@1.15.1":
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-1.15.1.tgz#8a306fb0042bc2c321ff45745828d0ad5ef49237"
+  integrity sha512-M3AfKppTh22doL7IwwUasvjPu8yqPI0lAmmtc5lOeenXbDI48UK919iuzIQ5N1viUUzgwplrzKlTZaLi9At0rg==
   dependencies:
     "@firebase/component" "0.1.13"
     "@firebase/firestore-types" "1.11.0"
@@ -1413,33 +1413,25 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.4.4.tgz#d94cbb3b354a07f1f5b80e554d6b9e34aba99e41"
   integrity sha512-9nKENeWRI6kQk44TbeqleIVtNLfcS3klVUepzl/ZCqzR5Bi06uqBCD277hdVvG/wL1pxA+R/pgJQLqnF5E2wPQ==
 
-"@nextdapp/core@^0.8.5":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@nextdapp/core/-/core-0.8.5.tgz#05d3553fc83caf5b9fac98cbefb1f5a9a96ce2df"
-  integrity sha512-RHBRHYPSvtb7+R6AgJ066urv7lTK0ESwzSN2eg6JfrKuCATNVoxtLP6/sCLKpzN0/st0VSavC6x5tyt7YCfRiA==
+"@nextdapp/core@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@nextdapp/core/-/core-0.10.0.tgz#458c08c871e4a472a2563942ed1ba44f827e8f30"
+  integrity sha512-iPOhDpizTvn2U58qEC5oUAI45pD2OjoJbIXxmOM93nmBrGcrh72uHQ/aph6+6MhUAO955nrGZE1njd7d+XGAlA==
   dependencies:
     isomorphic-fetch "^2.2.1"
-    ramdam "^1.6.2"
-    redux "^4.0.5"
-    redux-observable "^1.2.0"
-    redux-thunk "^2.3.0"
-    rxjs "^6.5.5"
 
-"@nextdapp/firebase@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@nextdapp/firebase/-/firebase-0.6.0.tgz#a1afdea8a84c831c3ebd2c4598536acfbf48685d"
-  integrity sha512-jyobvdVz358A7gMJCnoV9834htrbA74uwmUJ8OyLyTCPgntrA7ZVjkC9fUQY+1lnGZmO+qNaWnpKOINHYMSq/g==
+"@nextdapp/firebase@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@nextdapp/firebase/-/firebase-0.7.1.tgz#7c1c1f612f031ad6b0e518e90a8ac5946b893563"
+  integrity sha512-2zOrTUh88nrNgIka9J924CuoLumdqLrkQ7eU8Z8E0C1eZbsWF0AcO1jLufaIanCQXaPdTE69ZylG/EgVIDJ/Cw==
   dependencies:
     firebase "^7.14.4"
-    firestore-sweet "^0.4.4"
-    ramdam "^1.6.2"
+    firestore-sweet "^0.4.6"
 
-"@nextdapp/util@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@nextdapp/util/-/util-0.12.0.tgz#832ec565ca43f32f2064b6b3ba69abcf836ff3ad"
-  integrity sha512-hLpReEtlY9LKHGHtzf4v9spMVGEnYVqMQI2vf7mRr7fcrYAkVeYrf3Dbg86/3o79lqY2dGX4cDM2oKKmQAlb+w==
-  dependencies:
-    ramdam "^1.6.2"
+"@nextdapp/util@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@nextdapp/util/-/util-0.15.0.tgz#11607d5fb049489b930ca570528a49fa5f03b225"
+  integrity sha512-DbhTAevhOJP9VSTVARV6HZSNdpxspXAO+fvoI/NSTMagYOScMWVA8i4h1Aq9Xx9x48s69uIhzjjcdah8/PYwjw==
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -1561,9 +1553,9 @@
   integrity sha512-FbNmu4F67d3oZMWBV6Y4MaPER+0EpE9eIYf2yaHhCWovc1dlXCZkqGX4NLHfVVr6umt20TNBdRzrNJIzIKfdbw==
 
 "@types/node@^13.7.0":
-  version "13.13.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.10.tgz#34a9be3cbc409fd235984bd18a130006f5234396"
-  integrity sha512-J+FbkhLTcFstD7E5mVZDjYxa1VppwT2HALE6H3n2AnBSP8uiCQk0Pyr6BkJcP38dFV9WecoVJRJmFnl9ikIW7Q==
+  version "13.13.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.12.tgz#9c72e865380a7dc99999ea0ef20fc9635b503d20"
+  integrity sha512-zWz/8NEPxoXNT9YyF2osqyA9WjssZukYpgI4UYZpOjcyqwIUqWGkcCionaEb9Ki+FULyPyvNFpg/329Kd2/pbw==
 
 "@types/q@^1.5.1":
   version "1.5.4"
@@ -3314,16 +3306,16 @@ find-up@^4.0.0:
     path-exists "^4.0.0"
 
 firebase@^7.14.4:
-  version "7.15.0"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-7.15.0.tgz#8c80b59ef28eb36c699fa32f6a0e63cd74274c00"
-  integrity sha512-0t8w/TT+230/n/XWBw9jGMApCkIEb5K1b+6t4R+SAMOZHMJZvoAwMcwgQXoYeUBFOJOQpgDhIZK8PzApq4iUXw==
+  version "7.15.1"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-7.15.1.tgz#a57ce25369525f5078871716218716e5f17902d9"
+  integrity sha512-RmS6UMcU2YeQK/gFi7fqdern+45e/hKDFrtLQ53kU0jZjQ3u4W9r9ibEGFGEgQ5ufVt8IdraJ3s6l5xrql7KuA==
   dependencies:
     "@firebase/analytics" "0.3.6"
     "@firebase/app" "0.6.5"
     "@firebase/app-types" "0.6.1"
     "@firebase/auth" "0.14.6"
     "@firebase/database" "0.6.4"
-    "@firebase/firestore" "1.15.0"
+    "@firebase/firestore" "1.15.1"
     "@firebase/functions" "0.4.45"
     "@firebase/installations" "0.4.11"
     "@firebase/messaging" "0.6.17"
@@ -3333,12 +3325,12 @@ firebase@^7.14.4:
     "@firebase/storage" "0.3.35"
     "@firebase/util" "0.2.48"
 
-firestore-sweet@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/firestore-sweet/-/firestore-sweet-0.4.4.tgz#6e7a8af7018144d9bbfd3855162fc339307a0f3a"
-  integrity sha512-sDLyb/sSFen9kux1sJ0nNylglWmUU7fVoiCtnbtAxezf7b9jKgs3P0xAOKV+YTIDPxjJqBRv/Ym7r8d8FjKKug==
+firestore-sweet@^0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/firestore-sweet/-/firestore-sweet-0.4.6.tgz#9a4e49d6846074b097e01750d15b023759d9df87"
+  integrity sha512-2DlNDst43nE4UF0JLJ4jFd82onvCkw/FyFblWsLuayHlYD9RcMgUEk0xv1kC4iLnqtCckhb8kG62otewTjyQNg==
   dependencies:
-    ramdam "^1.0.4"
+    ramda "^0.27.0"
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -3590,13 +3582,6 @@ hmac-drbg@^1.0.0:
     hash.js "^1.0.3"
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
-
-hoist-non-react-statics@^3.3.0:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
-  integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
-  dependencies:
-    react-is "^16.7.0"
 
 hsl-regex@^1.0.0:
   version "1.0.0"
@@ -4464,11 +4449,6 @@ next-offline@^5.0.0:
     fs-extra "~8.1.0"
     workbox-webpack-plugin "^5.0.0"
 
-next-redux-wrapper@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-6.0.0.tgz#079a142a1178b44034ffbb72a4247e05cd1ac125"
-  integrity sha512-M+8bglQKZ/IDY98xMkDvXvLRK6N86F6z9suzpGcktOy1ImV18KH8iIiusC8t6PiZxMLIb9FyHX1I3mEgM4Bt2Q==
-
 next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
@@ -5283,7 +5263,7 @@ prop-types-exact@1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@15.7.2, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5391,29 +5371,10 @@ querystring@0.2.0, querystring@^0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-ramda-adjunct@^2.25.0:
-  version "2.27.0"
-  resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.27.0.tgz#674b62acd3545d1ae8395dbe6f160bc87611937d"
-  integrity sha512-Z0+z+nEcbAguWSqlBJXLh3g4d2H82s0koDTiBm4WHkv02eXP82otRWRAqbHfoXQbUtb89XKxMz1NJKsQmC2yGA==
-
-ramda-extension@^0.10.1:
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/ramda-extension/-/ramda-extension-0.10.3.tgz#27026970889730c2c3d214e4d3138002d9553eb2"
-  integrity sha512-6B7tlSL6C7TR/hspLLibmowPEJRkX5pgAN3Mb2DhwFqQIT+KSOtx3fGNdJh3MyViLRil67hFlkeZHOMwBKd+yw==
-
 ramda@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.27.0.tgz#915dc29865c0800bf3f69b8fd6c279898b59de43"
   integrity sha512-pVzZdDpWwWqEVVLshWUHjNwuVP7SfcmPraYuqocJp1yo2U1R7P+5QAfDhdItkuoGqIBnBYrtPp7rEPqDn9HlZA==
-
-ramdam@^1.0.0, ramdam@^1.0.4, ramdam@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/ramdam/-/ramdam-1.6.2.tgz#6420a6d7dee2633a98ef23b69be8f3cdec406bca"
-  integrity sha512-CZ2TfFZ6XcrdxMIswBPv6yl7DMNR/nwRb+2lHZXsc3H6Ogu7yl6RsRrz3wZQrbIhEXFAa/xS/QpeoSNPGVsJbw==
-  dependencies:
-    ramda "^0.27.0"
-    ramda-adjunct "^2.25.0"
-    ramda-extension "^0.10.1"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
@@ -5440,21 +5401,10 @@ react-dom@^16.13.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-is@16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.9.0:
+react-is@16.13.1, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
-
-react-redux@^7.1.3:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.0.tgz#f970f62192b3981642fec46fd0db18a074fe879d"
-  integrity sha512-EvCAZYGfOLqwV7gh849xy9/pt55rJXPwmYvI4lilPM5rUT/1NxuuN59ipdBksRVSvz0KInbPnp4IfoXJXCqiDA==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    hoist-non-react-statics "^3.3.0"
-    loose-envify "^1.4.0"
-    prop-types "^15.7.2"
-    react-is "^16.9.0"
 
 react-refresh@0.8.3:
   version "0.8.3"
@@ -5508,23 +5458,10 @@ readdirp@~3.4.0:
   dependencies:
     picomatch "^2.2.1"
 
-redux-observable@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-1.2.0.tgz#ff51b6c6be2598e9b5e89fc36639186bb0e669c7"
-  integrity sha512-yeR90RP2WzZzCxxnQPlh2uFzyfFLsfXu8ROh53jGDPXVqj71uNDMmvi/YKQkd9ofiVoO4OYb1snbowO49tCEMg==
-
-redux-thunk@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
-  integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
-
-redux@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
-  integrity sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==
-  dependencies:
-    loose-envify "^1.4.0"
-    symbol-observable "^1.2.0"
+recoil@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.0.7.tgz#197066ac0a983e4728f5973033bbe5b40a277d40"
+  integrity sha512-U/0kniHLk131hKhAX35QGdghVf3+PSkLcFIFoNBNy+yv62qCLm3TE5c3v4x4WYzuKgw1fxU3GGhKHAUYdyRnTQ==
 
 reflect.ownkeys@^0.2.0:
   version "0.2.0"
@@ -5730,13 +5667,6 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   integrity sha1-6Eg5bwV9Ij8kOGkkYY4laUFh7Ec=
   dependencies:
     aproba "^1.1.1"
-
-rxjs@^6.5.5:
-  version "6.5.5"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
-  integrity sha512-WfQI+1gohdf0Dai/Bbmk5L5ItH5tYqm3ki2c5GdWhKjalzjg93N3avFjVStyZZz+A2Em+ZxKH5bNghw9UeylGQ==
-  dependencies:
-    tslib "^1.9.0"
 
 safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@^5.2.0, safe-buffer@~5.2.0:
   version "5.2.1"
@@ -6223,11 +6153,6 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
-
-symbol-observable@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
-  integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
 
 tapable@^1.0.0, tapable@^1.1.3:
   version "1.1.3"

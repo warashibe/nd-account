@@ -1,4 +1,5 @@
-const R = require("ramdam")
+import { complement, isNil } from "ramda"
+const xNil = complement(isNil)
 const { parse } = require("url")
 require("isomorphic-fetch")
 const toParams = params =>
@@ -31,7 +32,7 @@ export default ({ conf }) => async (req, res) => {
       })
     }).then(r => r.json())
     console.log(r)
-    if (R.xNil(r.error_message)) {
+    if (xNil(r.error_message)) {
       res.end(JSON.stringify(r))
     } else {
       try {

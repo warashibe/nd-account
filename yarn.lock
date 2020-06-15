@@ -1994,33 +1994,18 @@
     "@hapi/bourne" "1.x.x"
     "@hapi/hoek" "8.x.x"
 
-"@nextdapp/core@^0.8.5":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@nextdapp/core/-/core-0.8.5.tgz#05d3553fc83caf5b9fac98cbefb1f5a9a96ce2df"
-  integrity sha512-RHBRHYPSvtb7+R6AgJ066urv7lTK0ESwzSN2eg6JfrKuCATNVoxtLP6/sCLKpzN0/st0VSavC6x5tyt7YCfRiA==
-  dependencies:
-    isomorphic-fetch "^2.2.1"
-    ramdam "^1.6.2"
-    redux "^4.0.5"
-    redux-observable "^1.2.0"
-    redux-thunk "^2.3.0"
-    rxjs "^6.5.5"
-
-"@nextdapp/firebase@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@nextdapp/firebase/-/firebase-0.6.0.tgz#a1afdea8a84c831c3ebd2c4598536acfbf48685d"
-  integrity sha512-jyobvdVz358A7gMJCnoV9834htrbA74uwmUJ8OyLyTCPgntrA7ZVjkC9fUQY+1lnGZmO+qNaWnpKOINHYMSq/g==
+"@nextdapp/firebase@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@nextdapp/firebase/-/firebase-0.7.1.tgz#7c1c1f612f031ad6b0e518e90a8ac5946b893563"
+  integrity sha512-2zOrTUh88nrNgIka9J924CuoLumdqLrkQ7eU8Z8E0C1eZbsWF0AcO1jLufaIanCQXaPdTE69ZylG/EgVIDJ/Cw==
   dependencies:
     firebase "^7.14.4"
-    firestore-sweet "^0.4.4"
-    ramdam "^1.6.2"
+    firestore-sweet "^0.4.6"
 
-"@nextdapp/util@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@nextdapp/util/-/util-0.12.0.tgz#832ec565ca43f32f2064b6b3ba69abcf836ff3ad"
-  integrity sha512-hLpReEtlY9LKHGHtzf4v9spMVGEnYVqMQI2vf7mRr7fcrYAkVeYrf3Dbg86/3o79lqY2dGX4cDM2oKKmQAlb+w==
-  dependencies:
-    ramdam "^1.6.2"
+"@nextdapp/util@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@nextdapp/util/-/util-0.15.0.tgz#11607d5fb049489b930ca570528a49fa5f03b225"
+  integrity sha512-DbhTAevhOJP9VSTVARV6HZSNdpxspXAO+fvoI/NSTMagYOScMWVA8i4h1Aq9Xx9x48s69uIhzjjcdah8/PYwjw==
 
 "@portis/eth-json-rpc-middleware@^4.1.2":
   version "4.1.2"
@@ -5831,12 +5816,12 @@ firebase@^7.14.4:
     "@firebase/storage" "0.3.35"
     "@firebase/util" "0.2.48"
 
-firestore-sweet@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/firestore-sweet/-/firestore-sweet-0.4.4.tgz#6e7a8af7018144d9bbfd3855162fc339307a0f3a"
-  integrity sha512-sDLyb/sSFen9kux1sJ0nNylglWmUU7fVoiCtnbtAxezf7b9jKgs3P0xAOKV+YTIDPxjJqBRv/Ym7r8d8FjKKug==
+firestore-sweet@^0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/firestore-sweet/-/firestore-sweet-0.4.6.tgz#9a4e49d6846074b097e01750d15b023759d9df87"
+  integrity sha512-2DlNDst43nE4UF0JLJ4jFd82onvCkw/FyFblWsLuayHlYD9RcMgUEk0xv1kC4iLnqtCckhb8kG62otewTjyQNg==
   dependencies:
-    ramdam "^1.0.4"
+    ramda "^0.27.0"
 
 flatmap@0.0.3:
   version "0.0.3"
@@ -7679,7 +7664,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isomorphic-fetch@2.2.1, isomorphic-fetch@^2.2.1:
+isomorphic-fetch@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   integrity sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
@@ -11033,29 +11018,10 @@ rabin-wasm@~0.0.8:
     node-fetch "^2.6.0"
     readable-stream "^2.0.4"
 
-ramda-adjunct@^2.25.0:
-  version "2.27.0"
-  resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.27.0.tgz#674b62acd3545d1ae8395dbe6f160bc87611937d"
-  integrity sha512-Z0+z+nEcbAguWSqlBJXLh3g4d2H82s0koDTiBm4WHkv02eXP82otRWRAqbHfoXQbUtb89XKxMz1NJKsQmC2yGA==
-
-ramda-extension@^0.10.1:
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/ramda-extension/-/ramda-extension-0.10.3.tgz#27026970889730c2c3d214e4d3138002d9553eb2"
-  integrity sha512-6B7tlSL6C7TR/hspLLibmowPEJRkX5pgAN3Mb2DhwFqQIT+KSOtx3fGNdJh3MyViLRil67hFlkeZHOMwBKd+yw==
-
 ramda@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.27.0.tgz#915dc29865c0800bf3f69b8fd6c279898b59de43"
   integrity sha512-pVzZdDpWwWqEVVLshWUHjNwuVP7SfcmPraYuqocJp1yo2U1R7P+5QAfDhdItkuoGqIBnBYrtPp7rEPqDn9HlZA==
-
-ramdam@^1.0.4, ramdam@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/ramdam/-/ramdam-1.6.2.tgz#6420a6d7dee2633a98ef23b69be8f3cdec406bca"
-  integrity sha512-CZ2TfFZ6XcrdxMIswBPv6yl7DMNR/nwRb+2lHZXsc3H6Ogu7yl6RsRrz3wZQrbIhEXFAa/xS/QpeoSNPGVsJbw==
-  dependencies:
-    ramda "^0.27.0"
-    ramda-adjunct "^2.25.0"
-    ramda-extension "^0.10.1"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.3, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
@@ -11219,24 +11185,6 @@ reduce-without@^1.0.1:
   integrity sha1-aK0OrRGFXJo31OglbBW7+Hly/Iw=
   dependencies:
     test-value "^2.0.0"
-
-redux-observable@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-1.2.0.tgz#ff51b6c6be2598e9b5e89fc36639186bb0e669c7"
-  integrity sha512-yeR90RP2WzZzCxxnQPlh2uFzyfFLsfXu8ROh53jGDPXVqj71uNDMmvi/YKQkd9ofiVoO4OYb1snbowO49tCEMg==
-
-redux-thunk@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
-  integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
-
-redux@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
-  integrity sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==
-  dependencies:
-    loose-envify "^1.4.0"
-    symbol-observable "^1.2.0"
 
 reflexbox@^4.0.6:
   version "4.0.6"
@@ -11550,13 +11498,6 @@ rustbn.js@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/rustbn.js/-/rustbn.js-0.2.0.tgz#8082cb886e707155fd1cb6f23bd591ab8d55d0ca"
   integrity sha512-4VlvkRUuCJvr2J6Y0ImW7NvTCriMi7ErOAqWk1y69vAdoNIzCF3yPmgeNzx+RQTLEDFq5sHfscn1MwHxP9hNfA==
-
-rxjs@^6.5.5:
-  version "6.5.5"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
-  integrity sha512-WfQI+1gohdf0Dai/Bbmk5L5ItH5tYqm3ki2c5GdWhKjalzjg93N3avFjVStyZZz+A2Em+ZxKH5bNghw9UeylGQ==
-  dependencies:
-    tslib "^1.9.0"
 
 safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@^5.2.0, safe-buffer@~5.2.0:
   version "5.2.1"
@@ -12348,11 +12289,6 @@ supports-color@^5.3.0, supports-color@^5.5.0:
   dependencies:
     has-flag "^3.0.0"
 
-symbol-observable@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
-  integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
-
 table-layout@^0.4.2:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/table-layout/-/table-layout-0.4.5.tgz#d906de6a25fa09c0c90d1d08ecd833ecedcb7378"
@@ -12609,7 +12545,7 @@ tslib@1.11.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"
   integrity sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==
 
-tslib@^1.10.0, tslib@^1.9.0:
+tslib@^1.10.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==

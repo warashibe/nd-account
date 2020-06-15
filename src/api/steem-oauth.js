@@ -1,6 +1,7 @@
+import { is, complement, isNil } from "ramda"
+const xNil = complement(isNil)
 const { parse } = require("url")
 const steemconnect = require("steemconnect")
-const R = require("ramdam")
 require("isomorphic-fetch")
 export default ({ conf }) => async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*")
@@ -34,9 +35,9 @@ export default ({ conf }) => async (req, res) => {
         conf.firebase.id
       }.cloudfunctions.net/login_account`
       let href = ""
-      if (R.isNotNil(query.uid)) {
+      if (xNil(query.uid)) {
         href = `${func_url}?target=steem&uid=${
-          R.isArray(query.uid) ? query.uid[0] : query.uid
+          is(Array)(query.uid) ? query.uid[0] : query.uid
         }&user_id=${r2.id}&token=${
           query.code
         }&refresh=&name=${encodeURIComponent(

@@ -1,9 +1,10 @@
+import { complement, isNil } from "ramda"
+const xNil = complement(isNil)
 const { Credentials } = require("uport-credentials")
 const message = require("uport-transports").message.util
 const transports = require("uport-transports").transport
 const decodeJWT = require("did-jwt").decodeJWT
 const { parse } = require("url")
-const R = require("ramdam")
 require("isomorphic-fetch")
 import { Resolver } from "did-resolver"
 import { getResolver } from "ethr-did-resolver"
@@ -24,7 +25,7 @@ export default ({ conf }) => async (req, res) => {
   let callbackUrl = `https://us-central1-${
     conf.firebase.id
   }.cloudfunctions.net/loginUport_account?id=${query.id}`
-  if (R.xNil(query.uid)) {
+  if (xNil(query.uid)) {
     callbackUrl += `&uid=${query.uid}`
   }
   let obj = {

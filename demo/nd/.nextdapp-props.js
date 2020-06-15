@@ -4,8 +4,10 @@ const mergeProps = (name, obj) => {
     props[`${k}$${name}`] = obj[k]
   }
 }
-mergeProps("core", require("@nextdapp/core").init)
-mergeProps("util", require("@nextdapp/util").init)
-mergeProps("firebase", require("@nextdapp/firebase").init)
-mergeProps("account", require("../..").init)
+import { default as firebase } from "@nextdapp/firebase/lib/init"
+mergeProps("firebase", firebase)
+import { default as account } from "../../lib/init"
+mergeProps("account", account)
+import { default as util } from "@nextdapp/util/lib/init"
+mergeProps("util", util)
 export default props

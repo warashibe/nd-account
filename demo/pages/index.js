@@ -1,7 +1,8 @@
 import bind from "nd/bind"
 import { useState, Fragment, useEffect } from "react"
 import { fb, isFirebase } from "@nextdapp/firebase"
-import R from "ramdam"
+import { complement, prop, hasPath, isNil, indexBy } from "ramda"
+const xNil = complement(isNil)
 import Login from "nd/account/Login"
 import UPort from "nd/account/UPort"
 import Profile from "nd/account/Profile"
@@ -9,27 +10,28 @@ import LinkAccount from "nd/account/LinkAccount"
 import { Box, Flex, Text, Image, Button } from "rebass"
 import { socials } from "../.."
 const btn = { cursor: "pointer", ":hover": { opacity: 0.75 } }
-const socials_map = R.indexBy(R.prop("key"))(socials)
+const socials_map = indexBy(prop("key"))(socials)
 
 export default bind(
   props => {
+    const fn = props.init()
     useEffect(() => {
       isFirebase(props.conf).then(() => {
-        props.changeUser$account()
+        fn.changeUser$account()
       })
     }, [])
     useEffect(
       () => {
-        if (R.hasPath(["router", "query", "code"])(props)) {
+        if (hasPath(["router", "query", "code"])(props)) {
           isFirebase(props.conf).then(() => {
-            props.check_alis$account({ router: props.router })
+            fn.check_alis$account({ router: props.router })
           })
         }
       },
       [props.router.query]
     )
-    return R.isNil(props.user$account) ? (
-      R.xNil(props.uport$account) ? (
+    return isNil(props.user$account) ? (
+      xNil(props.uport$account) ? (
         <UPort />
       ) : (
         <Login />
@@ -50,8 +52,11 @@ export default bind(
       </Fragment>
     )
   },
-  ["user$account", "uport$account", "processing$util"],
   [
+    "user$account",
+    "uport$account",
+    "processing$util",
+
     "changeUser$account",
     "check_alis$account",
     "linkAccount$account",

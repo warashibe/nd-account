@@ -1,6 +1,6 @@
 {
   "name": "@nextdapp/account",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "scripts": {
     "build": "babel src --out-dir lib"
   },
@@ -14,16 +14,14 @@
   },
   "peerDependencies": {
     "next": "^9.4.4",
-    "next-redux-wrapper": "^6.0.2",
-    "react": "^16.13.1",
-    "react-redux": "^7.2.0"
+    "ramda": "^0.27.0",
+    "react": "^16.13.1"
   },
   "license": "MIT",
   "dependencies": {
     "3box": "^1.19.0",
-    "@nextdapp/core": "^0.8.5",
-    "@nextdapp/firebase": "^0.6.0",
-    "@nextdapp/util": "^0.12.0",
+    "@nextdapp/firebase": "^0.7.1",
+    "@nextdapp/util": "^0.15.0",
     "base64url": "^3.0.1",
     "did-jwt": "^4.3.3",
     "did-resolver": "^1.1.0",
@@ -32,7 +30,6 @@
     "identicon.js": "^2.3.3",
     "js-sha256": "^0.9.0",
     "nookies": "^2.3.0",
-    "ramdam": "^1.6.2",
     "rebass": "^4.0.7",
     "steemconnect": "^3.0.4",
     "uport-connect": "^1.1.11",

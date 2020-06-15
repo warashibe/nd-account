@@ -1,28 +1,50 @@
-import R from "ramdam"
+import {
+  map,
+  __,
+  indexBy,
+  prop,
+  hasPath,
+  compose,
+  filter,
+  values,
+  mapObjIndexed,
+  includes,
+  complement,
+  pluck,
+  isNil,
+  keys,
+  difference
+} from "ramda"
+const xNil = complement(isNil)
+
 import React from "react"
 import { Box, Flex, Text, Image, Button } from "rebass"
 import { socials } from "../const"
 const btn = { cursor: "pointer", ":hover": { opacity: 0.75 } }
-const socials_map = R.indexBy(R.prop("key"))(socials)
+const socials_map = indexBy(prop("key"))(socials)
 
-export const props = ["user$account"]
-export const funcs = ["unlinkAccount$acocount", "linkAccount$account"]
+export const props = [
+  "user$account",
+  "unlinkAccount$acocount",
+  "linkAccount$account"
+]
 export const Component = props => {
-  const methods = R.isNil(props.methods)
+  const fn = props.init()
+  const methods = isNil(props.methods)
     ? socials
-    : R.filter(v => {
-        return R.includes(v.key)(props.methods)
+    : filter(v => {
+        return includes(v.key)(props.methods)
       })(socials)
 
   return (
     <Flex textAlign="center">
       <Box p={3} width={1}>
         <Flex width={1} flexWrap="wrap">
-          {R.compose(
-            R.filter(R.xNil),
-            R.map(
+          {compose(
+            filter(xNil),
+            map(
               v =>
-                R.includes(v)(["authereum", "metamask"]) ? null : (
+                includes(v)(["authereum", "metamask"]) ? null : (
                   <Flex
                     width={[1 / 2, null, 1 / 3, 1 / 2, 1 / 3]}
                     color="white"
@@ -31,7 +53,7 @@ export const Component = props => {
                   >
                     <Box
                       onClick={() =>
-                        props.unlinkAccount$account({
+                        fn.unlinkAccount$account({
                           provider: v,
                           user: props.user$account
                         })
@@ -59,9 +81,9 @@ export const Component = props => {
                   </Flex>
                 )
             )
-          )(R.keys(props.user$account.links))}
-          {R.compose(
-            R.map(v => (
+          )(keys(props.user$account.links))}
+          {compose(
+            map(v => (
               <Flex
                 width={[1 / 2, null, 1 / 3, 1 / 2, 1 / 3]}
                 color="white"
@@ -70,7 +92,7 @@ export const Component = props => {
               >
                 <Box
                   onClick={() =>
-                    props.linkAccount$account({
+                    fn.linkAccount$account({
                       provider: v,
                       user: props.user$account
                     })
@@ -97,9 +119,9 @@ export const Component = props => {
                 </Box>
               </Flex>
             )),
-            R.filter(R.complement(R.includes)(R.__, ["authereum", "metamask"])),
-            R.difference(R.__, R.keys(props.user$account.links))
-          )(R.pluck("key")(methods))}
+            filter(complement(includes)(__, ["authereum", "metamask"])),
+            difference(__, keys(props.user$account.links))
+          )(pluck("key")(methods))}
         </Flex>
       </Box>
     </Flex>
