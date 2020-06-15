@@ -2,7 +2,7 @@
 
 This is all about how to develop this next-dapp account plugin, not how to develop a next-dapp based project itself.
 
-Next Dapp itself is based upon [Next.js](https://nextjs.org/) / [React](https://reactjs.org) and hevily powered by [Recoil](https://recoiljs.org/) state management library. Other major dependencies are [Ramda](https://ramdajs.com/) and [Rebass](https://rebassjs.org/). 
+Next Dapp itself is based upon [Next.js](https://nextjs.org/) / [React](https://reactjs.org) and heavily powered by [Recoil](https://recoiljs.org/) state management library. Other major dependencies are [Ramda](https://ramdajs.com/) and [Rebass](https://rebassjs.org/). 
 
 The core plugin is located at [@nextdapp/core](https://github.com/warashibe/nd-core).
 
