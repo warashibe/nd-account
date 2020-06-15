@@ -1,5 +1,6 @@
 const functions = require("firebase-functions")
-const R = require("ramdam")
+const R = require("ramda")
+const xNil = R.complement(R.isNil)
 const uuid = require("uuid/v4")
 const admin = require("firebase-admin")
 admin.initializeApp()
@@ -105,7 +106,7 @@ exports.loginMetamask = functions.https.onRequest(async (req, res) => {
     res.send({ verified: false, err: "signature is invalid" })
   } else {
     const wallet = await fsdb.get("wallet", address)
-    if (R.has("uid")(wallet) && R.isNotNil(uid)) {
+    if (R.has("uid")(wallet) && R.xNil(uid)) {
       res.send({ err: "account already in use" })
     } else {
       let set = false
@@ -166,7 +167,7 @@ exports.loginAuthereum = functions.https.onRequest(async (req, res) => {
     res.send({ verified, err: "signature is invalid" })
   } else {
     const wallet = await fsdb.get("wallet", address)
-    if (R.has("uid")(wallet) && R.isNotNil(uid)) {
+    if (R.has("uid")(wallet) && R.xNil(uid)) {
       res.send({ err: "account already in use" })
     } else {
       let set = false
@@ -216,7 +217,7 @@ exports.login = functions.https.onRequest(async (req, res) => {
     let uid = req.query.uid
     const dbname = `usermap_${target}`
     const user = await fsdb.get(dbname, user_id)
-    if (R.has("uid")(user) && R.isNotNil(uid)) {
+    if (R.has("uid")(user) && R.xNil(uid)) {
       res.send({ err: "account already in use" })
     } else {
       let set = false
