@@ -265,17 +265,17 @@ const getProvider = provider => {
 }
 
 const login_with = {
-  steem: async ({ set, state$, link = false, conf }) => {
+  steem: async ({ set, props, link = false, conf }) => {
     const [error, code] = await p(steem_client, "login")({})
     if (errlog(error, error, "Something went wrong!")) {
       return
     }
     let login_url = `/api/steem-oauth_account?code=${code}`
-    if (link) login_url += `&uid=${state$.value.user$account.uid}`
+    if (link) login_url += `&uid=${props.user$account.uid}`
     await _login_with({
       login_url: login_url,
       set,
-      state$,
+      props,
       provider: "steem"
     })
   },
@@ -290,19 +290,16 @@ const login_with = {
     setCookie(null, "alis_verifier", code_verifier, { path: "/" })
     window.location.href = purl
   },
-  authereum: async ({ conf, set, state$ }) => {
+  authereum: async ({ conf, set, props }) => {
     if (xNil(window)) {
       set(true, "processing$util")
-      const provider = state$.value.authereum$web3.getProvider()
+      const provider = props.authereum$web3.getProvider()
       await provider.enable()
-      const address = await state$.value.authereum$web3.getAccountAddress()
+      const address = await props.authereum$web3.getAccountAddress()
       if (xNil(address)) {
         const id = shortid.generate()
         await fb().fsdb.set({ address: address }, "login", id)
-        const signature = await state$.value.web3_authereum$web3.eth.sign(
-          id,
-          address
-        )
+        const signature = await props.web3_authereum$web3.eth.sign(id, address)
         const login_url = `https://${conf.firebase.region}-${
           conf.firebase.id
         }.cloudfunctions.net/loginAuthereum_account?data=${id}&signature=${signature}`
@@ -339,10 +336,10 @@ const login_with = {
       set(false, "processing$util")
     }
   },
-  metamask: async ({ conf, set, state$ }) => {
+  metamask: async ({ conf, set, props }) => {
     if (xNil(window)) {
       set(true, "processing$util")
-      const address = await state$.value.eth_selected$web3
+      const address = await props.eth_selected$web3
       if (xNil(address)) {
         const id = shortid.generate()
         await fb().fsdb.set({ address: address }, "login", id)
@@ -393,7 +390,7 @@ const login_with = {
       }
     }
   },
-  uport: async ({ conf, set, state$, link = false }) => {
+  uport: async ({ conf, set, props, link = false }) => {
     const id = shortid.generate()
     const unsub = await fb().fsdb.on("login_read", id, async res => {
       if (xNil(res)) {
@@ -433,7 +430,7 @@ const login_with = {
       }
     })
     let login_url = `/api/uport-login_account?id=${id}`
-    if (link) login_url += `&uid=${state$.value.user$account.uid}`
+    if (link) login_url += `&uid=${props.user$account.uid}`
     const json = await fetch(login_url).then(r => r.json())
     set(json, "uport$account")
   }
@@ -441,9 +438,9 @@ const login_with = {
 
 export const login = [
   ["processing$util", "uport$account"],
-  async ({ val: { provider }, set, state$, conf }) => {
+  async ({ val: { provider }, set, props, conf }) => {
     if (xNil(login_with[provider])) {
-      await login_with[provider]({ set, state$, conf })
+      await login_with[provider]({ set, props, conf })
     }
     set(true, "processing$util")
     const _provider = getProvider(provider)
@@ -472,13 +469,13 @@ function get_code_verifier() {
   return base64url(buf)
 }
 
-const checkUser = async state$ => {
+const checkUser = async props => {
   return await new Promise(res => {
     setInterval(async () => {
-      if (state$.value.user_init$account === false) {
-        res(await checkUser(state$))
+      if (props.user_init$account === false) {
+        res(await checkUser(props))
       } else {
-        res(state$.value.user$account)
+        res(props.user$account)
       }
     }, 500)
   })
@@ -486,24 +483,24 @@ const checkUser = async state$ => {
 
 export const check_alis = [
   ["processing$util"],
-  async ({ val: { router }, state$, set }) => {
+  async ({ val: { router }, props, set }) => {
     const code = router.query.code
     if (isNil(code)) return
     set(true, "processing$util")
     const cookies = parseCookies()
     const alis_verifier = cookies.alis_verifier
-    let user = await checkUser(state$)
+    let user = await checkUser(props)
     let login_url = `/api/alis-oauth_account?code=${code}&verifier=${
       cookies.alis_verifier
     }`
-    await _login_with({ login_url, set, state$, provider: "alis" })
+    await _login_with({ login_url, set, props, provider: "alis" })
     router.replace(router.pathname, router.pathname, { shallow: true })
   }
 ]
 
-const _login_with = async ({ set, state$, login_url, provider }) => {
-  if (hasPath(["value", "user", "uid"])(state$)) {
-    login_url += `&uid=${state$.value.user$account.uid}`
+const _login_with = async ({ set, props, login_url, provider }) => {
+  if (hasPath(["value", "user", "uid"])(props)) {
+    login_url += `&uid=${props.user$account.uid}`
   }
   const res = await fetch(login_url).then(response => response.json())
   if (xNil(res.user)) {
@@ -560,13 +557,13 @@ export const deleteAccount = [
 
 export const linkAccount = [
   ["processing$util"],
-  async ({ val: { provider, user }, set, state$, conf }) => {
+  async ({ val: { provider, user }, set, props, conf }) => {
     set(true, "processing$util")
     if (
       xNil(login_with[provider]) &&
       !includes(provider)(["metamask", "authereum"])()
     ) {
-      await login_with[provider]({ set, state$, link: true, conf })
+      await login_with[provider]({ set, props, link: true, conf })
     } else {
       const _provider = getProvider(provider)
       const currentUser = await fb().firebase.auth().currentUser
