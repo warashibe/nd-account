@@ -25,11 +25,12 @@ const socials_map = indexBy(prop("key"))(socials)
 
 export const props = [
   "user$account",
-  "unlinkAccount$acocount",
+  "unlinkAccount$account",
   "linkAccount$account"
 ]
 export const Component = props => {
   const fn = props.init()
+  console.log(fn)
   const methods = isNil(props.methods)
     ? socials
     : filter(v => {
