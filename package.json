@@ -20,8 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "3box": "^1.19.0",
-    "@nextdapp/firebase": "^0.7.1",
-    "@nextdapp/util": "^0.15.0",
+    "@nextdapp/firebase": "^0.8.0",
+    "@nextdapp/util": "^0.16.0",
     "base64url": "^3.0.1",
     "did-jwt": "^4.3.3",
     "did-resolver": "^1.1.0",

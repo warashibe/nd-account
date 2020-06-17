@@ -181,40 +181,33 @@ const userUpdate = async ({ u, set }) => {
   logging = false
   set({ user$account: user, user_init$account: true })
 }
+
 const _userUpdate_props = ["user$account", "user_init$account"]
 
-export const changeUser = [
-  [..._userUpdate_props],
-  async ({ val, set, conf }) => {
-    steem_client = new steemconnect.Client({
-      app: conf.steem.app,
-      callbackURL: conf.steem.redirect_uri,
-      scope: ["login"]
+export const changeUser = async ({ val, set, conf }) => {
+  steem_client = new steemconnect.Client({
+    app: conf.steem.app,
+    callbackURL: conf.steem.redirect_uri,
+    scope: ["login"]
+  })
+  fb()
+    .firebase.auth()
+    .onAuthStateChanged(async u => {
+      if (!logging) await userUpdate({ u, set })
     })
-    fb()
-      .firebase.auth()
-      .onAuthStateChanged(async u => {
-        if (!logging) await userUpdate({ u, set })
-      })
-  }
-]
+}
+changeUser.props = _userUpdate_props
 
-export const logout = [
-  [],
-  async ({ val }) => {
-    const auth = await fb().firebase.auth()
-    const [error] = await err(auth.signOut, auth)()
-    errlog(error, error, "ログアウトに失敗しました。もう一度お試し下さい。")
-  }
-]
+export const logout = async ({ val }) => {
+  const auth = await fb().firebase.auth()
+  const [error] = await err(auth.signOut, auth)()
+  errlog(error, error, "ログアウトに失敗しました。もう一度お試し下さい。")
+}
 
-export const logout_authereum = [
-  [],
-  async ({ val }) => {
-    const [error] = await err(fb().firebase.auth(), "signOut")()
-    errlog(error, error, "ログアウトに失敗しました。もう一度お試し下さい。")
-  }
-]
+export const logout_authereum = async ({ val }) => {
+  const [error] = await err(fb().firebase.auth(), "signOut")()
+  errlog(error, error, "ログアウトに失敗しました。もう一度お試し下さい。")
+}
 
 const _login = async ({ user, provider, set, _add = {} }) => {
   logging = true
@@ -436,24 +429,22 @@ const login_with = {
   }
 }
 
-export const login = [
-  ["processing$util", "uport$account"],
-  async ({ val: { provider }, set, props, conf }) => {
-    if (xNil(login_with[provider])) {
-      await login_with[provider]({ set, props, conf })
-    }
-    set(true, "processing$util")
-    const _provider = getProvider(provider)
-    const auth = await fb().firebase.auth()
-    const [error, user] = await err(auth.signInWithPopup, auth)(_provider)
-    if (xNil(error)) {
-      alert("something went wrong")
-    } else {
-      await _login({ user, provider: reverse_name_map[provider], set })
-    }
-    set(false, "processing$util")
+export const login = async ({ val: { provider }, set, props, conf }) => {
+  if (xNil(login_with[provider])) {
+    await login_with[provider]({ set, props, conf })
   }
-]
+  set(true, "processing$util")
+  const _provider = getProvider(provider)
+  const auth = await fb().firebase.auth()
+  const [error, user] = await err(auth.signInWithPopup, auth)(_provider)
+  if (xNil(error)) {
+    alert("something went wrong")
+  } else {
+    await _login({ user, provider: reverse_name_map[provider], set })
+  }
+  set(false, "processing$util")
+}
+login.props = ["processing$util", "uport$account"]
 
 function get_code_challenge(str) {
   const hash = sha256.arrayBuffer(str)
@@ -481,22 +472,20 @@ const checkUser = async props => {
   })
 }
 
-export const check_alis = [
-  ["processing$util"],
-  async ({ val: { router }, props, set }) => {
-    const code = router.query.code
-    if (isNil(code)) return
-    set(true, "processing$util")
-    const cookies = parseCookies()
-    const alis_verifier = cookies.alis_verifier
-    let user = await checkUser(props)
-    let login_url = `/api/alis-oauth_account?code=${code}&verifier=${
-      cookies.alis_verifier
-    }`
-    await _login_with({ login_url, set, props, provider: "alis" })
-    router.replace(router.pathname, router.pathname, { shallow: true })
-  }
-]
+export const check_alis = async ({ val: { router }, props, set }) => {
+  const code = router.query.code
+  if (isNil(code)) return
+  set(true, "processing$util")
+  const cookies = parseCookies()
+  const alis_verifier = cookies.alis_verifier
+  let user = await checkUser(props)
+  let login_url = `/api/alis-oauth_account?code=${code}&verifier=${
+    cookies.alis_verifier
+  }`
+  await _login_with({ login_url, set, props, provider: "alis" })
+  router.replace(router.pathname, router.pathname, { shallow: true })
+}
+check_alis.props = ["processing$util"]
 
 const _login_with = async ({ set, props, login_url, provider }) => {
   if (hasPath(["value", "user", "uid"])(props)) {
@@ -527,90 +516,84 @@ const _login_with = async ({ set, props, login_url, provider }) => {
   }
 }
 
-export const deleteAccount = [
-  ["processing$util"],
-  async ({ val: { user }, set }) => {
-    set(true, "processing$util")
-    await fb().fsdb.tx("users", user.uid, async ({ t, ref, data }) => {
-      for (let l in data.links || {}) {
-        const fsdb = fb().fsdb
-        let err = null
-        if (includes(l)(["metamask", "authereum"])) {
-          const [error] = await err(fsdb.delete)(
-            `wallet`,
-            data.links[l].address
-          )
-          if (xNil(error)) console.log(err)
-        } else if (includes(l)(["uport"])) {
-          await fsdb.delete(`uport`, data.links[l].id)
-        } else if (includes(l)(["steem", "alis"])) {
-          await fsdb.delete(`usermap_${l}`, data.links[l].username)
-        }
+export const deleteAccount = async ({ val: { user }, set }) => {
+  set(true, "processing$util")
+  await fb().fsdb.tx("users", user.uid, async ({ t, ref, data }) => {
+    for (let l in data.links || {}) {
+      const fsdb = fb().fsdb
+      let err = null
+      if (includes(l)(["metamask", "authereum"])) {
+        const [error] = await err(fsdb.delete)(`wallet`, data.links[l].address)
+        if (xNil(error)) console.log(err)
+      } else if (includes(l)(["uport"])) {
+        await fsdb.delete(`uport`, data.links[l].id)
+      } else if (includes(l)(["steem", "alis"])) {
+        await fsdb.delete(`usermap_${l}`, data.links[l].username)
       }
-      return await t.update(ref, { status: "deleted" })
-    })
-    let _user = fb().firebase.auth().currentUser
-    await _user.delete()
+    }
+    return await t.update(ref, { status: "deleted" })
+  })
+  let _user = fb().firebase.auth().currentUser
+  await _user.delete()
+  set(false, "processing$util")
+}
+deleteAccount.props = ["processing$util"]
+
+export const linkAccount = async ({
+  val: { provider, user },
+  set,
+  props,
+  conf
+}) => {
+  set(true, "processing$util")
+  if (
+    xNil(login_with[provider]) &&
+    !includes(provider)(["metamask", "authereum"])()
+  ) {
+    await login_with[provider]({ set, props, link: true, conf })
+  } else {
+    const _provider = getProvider(provider)
+    const currentUser = await fb().firebase.auth().currentUser
+    const [error, result] = await err(currentUser.linkWithPopup, currentUser)(
+      _provider
+    )
+    if (xNil(error)) {
+      alert(xNil(err.code) ? err.code : "something went wrong")
+    } else {
+      await _login({
+        user: result,
+        provider: reverse_name_map[provider],
+        set
+      })
+      await userUpdate({ u: result.user, set })
+    }
     set(false, "processing$util")
   }
-]
+  return
+}
+linkAccount.props = ["processing$util"]
 
-export const linkAccount = [
-  ["processing$util"],
-  async ({ val: { provider, user }, set, props, conf }) => {
-    set(true, "processing$util")
-    if (
-      xNil(login_with[provider]) &&
-      !includes(provider)(["metamask", "authereum"])()
-    ) {
-      await login_with[provider]({ set, props, link: true, conf })
-    } else {
-      const _provider = getProvider(provider)
-      const currentUser = await fb().firebase.auth().currentUser
-      const [error, result] = await err(currentUser.linkWithPopup, currentUser)(
-        _provider
-      )
-      if (xNil(error)) {
-        alert(xNil(err.code) ? err.code : "something went wrong")
-      } else {
-        await _login({
-          user: result,
-          provider: reverse_name_map[provider],
-          set
-        })
-        await userUpdate({ u: result.user, set })
-      }
-      set(false, "processing$util")
-    }
-    return
+export const unlinkAccount = async ({ val: { provider, user }, set }) => {
+  set(true, "processing$util")
+  if (includes(provider)(["metamask", "authereum"])) {
+    await fb().fsdb.delete(`wallet`, user.links[provider].address)
+  } else if (includes(provider)(["uport"])) {
+    await fb().fsdb.delete(`uport`, user.links[provider].id)
+  } else if (includes(provider)(["steem", "alis"])) {
+    await fb().fsdb.delete(`usermap_${provider}`, user.links[provider].username)
+  } else {
+    const _provider = getProvider(provider)
+    const result = await fb()
+      .firebase.auth()
+      .currentUser.unlink(reverse_name_map[provider])
   }
-]
+  await fb().fsdb.tx("users", user.uid, async ({ t, data, ref }) => {
+    let links = data.links
+    delete links[provider]
+    await t.update(ref, { links: links })
+  })
+  await userUpdate({ u: user, set })
+  set(false, "processing$util")
+}
 
-export const unlinkAccount = [
-  ["processing$util"],
-  async ({ val: { provider, user }, set }) => {
-    set(true, "processing$util")
-    if (includes(provider)(["metamask", "authereum"])) {
-      await fb().fsdb.delete(`wallet`, user.links[provider].address)
-    } else if (includes(provider)(["uport"])) {
-      await fb().fsdb.delete(`uport`, user.links[provider].id)
-    } else if (includes(provider)(["steem", "alis"])) {
-      await fb().fsdb.delete(
-        `usermap_${provider}`,
-        user.links[provider].username
-      )
-    } else {
-      const _provider = getProvider(provider)
-      const result = await fb()
-        .firebase.auth()
-        .currentUser.unlink(reverse_name_map[provider])
-    }
-    await fb().fsdb.tx("users", user.uid, async ({ t, data, ref }) => {
-      let links = data.links
-      delete links[provider]
-      await t.update(ref, { links: links })
-    })
-    await userUpdate({ u: user, set })
-    set(false, "processing$util")
-  }
-]
+unlinkAccount.props = ["processing$util"]

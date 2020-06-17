@@ -1994,18 +1994,18 @@
     "@hapi/bourne" "1.x.x"
     "@hapi/hoek" "8.x.x"
 
-"@nextdapp/firebase@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@nextdapp/firebase/-/firebase-0.7.1.tgz#7c1c1f612f031ad6b0e518e90a8ac5946b893563"
-  integrity sha512-2zOrTUh88nrNgIka9J924CuoLumdqLrkQ7eU8Z8E0C1eZbsWF0AcO1jLufaIanCQXaPdTE69ZylG/EgVIDJ/Cw==
+"@nextdapp/firebase@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@nextdapp/firebase/-/firebase-0.8.0.tgz#8312f02bb1d2d5625060ec0ea6cfecdcc8c4cbb5"
+  integrity sha512-YuPAK0O7NqI2ShEqI00/vj5HziP929R3gvOgEX4Bs3/mmMpu62nK+BHgP8kLFXeZHNrCj7Yy4frTCSi7dOjamQ==
   dependencies:
     firebase "^7.14.4"
     firestore-sweet "^0.4.6"
 
-"@nextdapp/util@^0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@nextdapp/util/-/util-0.15.0.tgz#11607d5fb049489b930ca570528a49fa5f03b225"
-  integrity sha512-DbhTAevhOJP9VSTVARV6HZSNdpxspXAO+fvoI/NSTMagYOScMWVA8i4h1Aq9Xx9x48s69uIhzjjcdah8/PYwjw==
+"@nextdapp/util@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@nextdapp/util/-/util-0.16.0.tgz#4989d80420c20ad26cc5b839c5835d8a2c1ac58d"
+  integrity sha512-XASM1ztT7Tx2tCyI3OqSWGjr6iLUcA/LdayF2hdS1bhpOcC/p9vcJza/yUW3WEtBFn0IWRBydDIUEJt/IYfmMg==
 
 "@portis/eth-json-rpc-middleware@^4.1.2":
   version "4.1.2"
